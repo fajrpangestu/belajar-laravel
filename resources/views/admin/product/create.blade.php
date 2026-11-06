@@ -99,7 +99,7 @@
                 </div>
 
             </div>
-           
+
             {{-- HARGA LAMINATING --}}
             <div class="row">
                 <div class="col-sm-3">
@@ -143,7 +143,7 @@
     {{-- GAMBAR --}}
     <div class="mb-3">
         <label for="" class="form-label-custom">Gambar</label>
-        <input type="file" class="form-control" name="image"> {{-- Atribut value dihapus karena tidak berlaku untuk type="file" --}}
+        <input type="file" class="form-control" name="images[]"> {{-- Atribut value dihapus karena tidak berlaku untuk type="file" --}}
         @error('image')
             <div class="invalid-feedback d-block">{{ $message }}</div>
         @enderror

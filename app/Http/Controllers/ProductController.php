@@ -71,21 +71,44 @@ class ProductController extends Controller
             $product = Product::create([
                 'category_id' => $validated['category_id'],
                 'name' => $validated['name'],
+                'price' => $validated['price'],
+                'sort_order' => $validated['sort_order'] ?? 0,
+                'image' => null,
+
+                'slug' => Str::slug($validated['name']),
+                'brief_description' => $validated['brief_description'],
+                'description' => $validated['description'],
+
+                'price_art_cartoon' => $validated['price_art_cartoon'],
+                'price_art_paper' => $validated['price_art_paper'],
+                'price_hvs' => $validated['price_hvs'],
+                'price_doft' => $validated['price_doft'],
+                'price_glossy' => $validated['price_glossy'],
+                'price_cutting' => $validated['price_cutting'],
+                'price_no_cutting' => $validated['price_no_cutting'],
             ]);
 
             if ($request->hasFile('images')) {
-                $imagesData = [];
+                $imageData = [];
+                $imagePath = null;
 
                 foreach ($request->file('images') as $key => $file) {
                     $path = $file->store('products', 'public');
+                    if ($key === 0) {
+                        $imagePath = $path;
+                    }
 
                     $imageData[] = [
                         'path' => $path,
-                        'alt' => $request->input('alt.{$key}') ?? $product->name,
+                        'alt' => $request->input('alt.{key}') ?? $product->name,
                         'sort_order' => $key + 1,
+
                     ];
                 }
-                $product->image()->createMany($imageData);
+                $product->images()->createMany($imageData);
+                if ($imagePath) {
+                    $product->update(['image' => $imagePath]);
+                }
             }
         });
 

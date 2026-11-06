@@ -1,7 +1,7 @@
 @extends('belajar')
 @section('content')
 <form action="{{ route('actionTambah')}}" method="post">
- @csrf 
+ @csrf
     <div class="form-group">
         <label for="">Angka 1</label>
         <input type="number" name="angka1" value="{{ $angka1 ?? '' }}" placeholder="Masukan Angka">
