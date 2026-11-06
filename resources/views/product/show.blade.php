@@ -46,8 +46,8 @@
                                     <i class="bi bi-heart fs-6 text-danger"></i>
                                 </button>
                             </div>
-                            
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="">
+
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="" class="image-fluid rounded-3" style="max-height: 250px" object-fit: cover; />
 
                         </div>
                     </div>
