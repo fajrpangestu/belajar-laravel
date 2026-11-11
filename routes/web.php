@@ -41,7 +41,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
 
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
     });
 });
 
@@ -52,3 +51,4 @@ Route::get('/product/{slug}', [CatalogController::class, 'product'])->name('prod
 Route::get('faq', [PageController::class, 'faq'])->name('faq.index');
 Route::get('contact', [PageController::class, 'contact'])->name('contact.index');
 Route::get('blog', [PageController::class, 'blog'])->name('blog.index');
+Route::get('/blog/{slug}', [PageController::class, 'showBlog'])->name('blog.show');

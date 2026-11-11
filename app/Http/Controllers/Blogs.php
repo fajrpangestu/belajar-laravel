@@ -61,7 +61,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $title = 'Edit Kateori || PPKD Sticker';
+        $title = 'Edit Kategori || PPKD Sticker';
 
         return view('admin.category.edit', compact('title', 'category'));
     }
@@ -73,7 +73,7 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
-            'slug' => 'nullable|string|unique:categories,slug,'.$category->id,
+            'slug' => 'nullable|string|unique:categories,slug,' . $category->id,
             'description' => 'nullable|string',
             'sort_order' => 'nullable|string',
             'icon' => 'nullable|string',
